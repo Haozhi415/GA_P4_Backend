@@ -32,7 +32,7 @@ app.use(
       if (!origin) return callback(null, true);
 
       const allowedOrigins = [
-        "http://localhost:5173",
+        "https://ga-p4-frontend.onrender.com",
         "https://ga-p4-backend.onrender.com",
       ];
       if (allowedOrigins.indexOf(origin) === -1) {

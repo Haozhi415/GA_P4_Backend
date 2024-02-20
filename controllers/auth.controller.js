@@ -58,8 +58,14 @@ async function signin(req, res, next) {
         "Access-Control-Allow-Credentials": "true",
       })
       .cookie("access_token", token, {
+        // The cookie cannot be accessed through client-side JavaScript.
+        // This is a security setting that can help to prevent cross-site scripting (XSS) attacks.
         httpOnly: true,
+        // The browser will send the cookie with cross-site requests.
+        // This is a security setting that can help to prevent cross-site request forgery (CSRF) attacks.
         sameSite: "None",
+        // The cookie will only be sent over HTTPS.
+        // This is a security setting that helps to ensure that the cookie data is encrypted during transmission.
         secure: true,
       })
       .status(200)

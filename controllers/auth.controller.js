@@ -57,7 +57,7 @@ async function signin(req, res, next) {
         "Access-Control-Allow-Origin": "http://localhost:5173",
         "Access-Control-Allow-Credentials": "true",
       })
-      .cookie("access_token", token, { httpOnly: false })
+      .cookie("access_token", token, { httpOnly: false, SameSite: "None" })
       .status(200)
       .json(rest);
   } catch (error) {

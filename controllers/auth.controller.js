@@ -57,7 +57,11 @@ async function signin(req, res, next) {
         "Access-Control-Allow-Origin": "https://ga-p4-frontend.onrender.com",
         "Access-Control-Allow-Credentials": "true",
       })
-      .cookie("access_token", token, { httpOnly: false, SameSite: "None" })
+      .cookie("access_token", token, {
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
+      })
       .status(200)
       .json(rest);
   } catch (error) {

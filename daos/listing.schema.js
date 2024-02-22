@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema; // Import Schema from mongoose
 
 const listingSchema = new Schema(
   {
@@ -52,8 +51,7 @@ const listingSchema = new Schema(
       required: true,
     },
     userRef: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+      type: String,
       required: true,
     },
   },

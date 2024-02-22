@@ -9,6 +9,6 @@ router.delete("/delete/:id", verifyToken, userController.deleteUser);
 
 router.get("/listings/:id", verifyToken, userController.getUserListings);
 
-router.get("/get/:id", verifyToken, userController.getUser);
+router.get("/get/:id", userController.getUser);
 
 module.exports = router;

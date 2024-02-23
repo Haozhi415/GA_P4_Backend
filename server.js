@@ -43,8 +43,10 @@ app.use(
         const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
         return callback(new Error(msg), false);
       }
+      // If the origin is allowed, return null as the error and true as the success.
       return callback(null, true);
     },
+    // The line below allows the client to send cookies to the server.
     credentials: true,
   })
 );

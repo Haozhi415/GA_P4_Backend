@@ -25,21 +25,27 @@ async function signup(req, res, next) {
 async function signin(req, res, next) {
   const { email, password } = req.body;
   try {
+    // Defined validUser as the result of the findOne method of the user schema.
     const validUser = await daoUser.findOne({ email });
     if (!validUser) {
       throw new Error("Invalid email or password");
     }
 
+    // If the email is found, but the password is not provided, it throws an error with a message of
+    // "Password is required".
     if (!password) {
       throw new Error("Password is required");
     }
+
+    // If a user with the provided email is found, it compares the provided password with the hashed password
+    // stored in the user record using bcryptjs library's compareSync method.
     const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) {
       throw new Error("Invalid email or password");
     }
 
-    // create a token and send it in a cookie to the client
-    // the token contains the user id and isAdmin status
+    // If the password is correct, create a token using the jwt.sign method.
+    // The token contains the user id and isAdmin status as the payload.
     const token = jwt.sign(
       { id: validUser._id, isAdmin: validUser.isAdmin },
       process.env.JWT_SECRET
@@ -67,7 +73,13 @@ async function signin(req, res, next) {
         // The cookie will only be sent over HTTPS.
         // This is a security setting that helps to ensure that the cookie data is encrypted during transmission.
         secure: true,
+        // The access_token cookie will be included in ALL requests to the same domain that the original request
+        // (the one that set the cookie) was made to, and for all paths on that domain which is
+        // https://ga-p4-backend.onrender.com
       })
+
+      // Sends the user details (excluding password) along with a status code of 200 (OK) in JSON format
+      // to the client.
       .status(200)
       .json(rest);
   } catch (error) {

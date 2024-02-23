@@ -34,7 +34,7 @@ app.use(
       // Only allows requests from the following origins:
       const allowedOrigins = [
         "https://ga-p4-frontend.onrender.com",
-        "https://ga-p4-backend.onrender.com",
+        // "https://ga-p4-backend.onrender.com",
       ];
       // If a request is made from an origin that is not allowed, return an error message.
       if (allowedOrigins.indexOf(origin) === -1) {

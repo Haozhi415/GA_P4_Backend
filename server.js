@@ -31,10 +31,12 @@ app.use(
       // (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
 
+      // Only allows requests from the following origins:
       const allowedOrigins = [
         "https://ga-p4-frontend.onrender.com",
         "https://ga-p4-backend.onrender.com",
       ];
+      // If a request is made from an origin that is not allowed, return an error message.
       if (allowedOrigins.indexOf(origin) === -1) {
         const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
         return callback(new Error(msg), false);

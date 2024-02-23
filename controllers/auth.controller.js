@@ -54,7 +54,7 @@ async function signin(req, res, next) {
     // the client can use the user details to display user information
     res
       .header({
-        "Access-Control-Allow-Origin": "http://localhost:5173",
+        "Access-Control-Allow-Origin": "https://ga-p4-frontend.onrender.com",
         "Access-Control-Allow-Credentials": "true",
       })
       .cookie("access_token", token, {

@@ -89,6 +89,7 @@ async function signin(req, res, next) {
 
 async function signout(req, res, next) {
   try {
+    // the clearCookie method is used to remove the access_token cookie from the client.
     res.clearCookie("access_token");
     res.status(200).json("User has been signed out.");
   } catch (error) {

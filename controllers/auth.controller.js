@@ -76,6 +76,7 @@ async function signin(req, res, next) {
         // The access_token cookie will be included in ALL requests to the same domain that the original request
         // (the one that set the cookie) was made to, and for all paths on that domain which is
         // https://ga-p4-backend.onrender.com
+        domain: "https://ga-p4-backend.onrender.com",
       })
 
       // Sends the user details (excluding password) along with a status code of 200 (OK) in JSON format

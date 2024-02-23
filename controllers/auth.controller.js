@@ -73,8 +73,8 @@ async function signin(req, res, next) {
         // The cookie will only be sent over HTTPS.
         // This is a security setting that helps to ensure that the cookie data is encrypted during transmission.
         secure: true,
-        // The access_token cookie will be included in ALL requests to the same domain that the original request
-        // (the one that set the cookie) was made to, and for all paths on that domain which is
+        // By default the access_token cookie will be included in ALL requests to the same domain that the
+        // original request (the one that set the cookie) was made to, and for all paths on that domain which is
         // https://ga-p4-backend.onrender.com
       })
 
